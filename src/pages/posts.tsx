@@ -41,7 +41,7 @@ export default class Posts extends React.Component<Props> {
     return (
       <>
         {posts.map(post => (
-          <Post post={post}></Post>
+          <Post key={post.id} post={post}></Post>
         ))}
         <a href="/index">INDEX</a>
       </>

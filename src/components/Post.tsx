@@ -6,7 +6,7 @@ type Props = {
 
 const component: React.FC<Props> = props => {
   return (
-    <div key={props.post.id}>
+    <div id={props.post.id}>
       <h3>{props.post.title}</h3>
       <p>{props.post.body}</p>
     </div>
