@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 const { useState } = React;
 
 type Props = {
   initial: number;
 };
 
-export const CountButton = (props: Props): JSX.Element => {
+export const CountButton: React.FC<Props> = props => {
   const [count, setCount] = useState(props.initial);
 
   return (

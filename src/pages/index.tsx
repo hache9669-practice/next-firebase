@@ -1,26 +1,25 @@
 import React from "react";
 import Head from "next/head";
 import { CountButton } from "../components/CountButton";
+import { NextPage, NextPageContext } from "next";
 
 type Props = {
   title: string;
 };
 
-class App extends React.Component<Props> {
-  static async getInitialProps(): Promise<Props> {
-    return { title: "Hello World" };
-  }
+const page: NextPage<Props> = props => {
+  return (
+    <>
+      <Head>
+        <title>{props.title}</title>
+      </Head>
+      <CountButton initial={0} />
+    </>
+  );
+};
 
-  render(): JSX.Element {
-    return (
-      <>
-        <Head>
-          <title>{this.props.title}</title>
-        </Head>
-        <CountButton initial={0} />
-      </>
-    );
-  }
-}
+page.getInitialProps = async (): Promise<Props> => {
+  return { title: "Hello World" };
+};
 
-export default App;
+export default page;

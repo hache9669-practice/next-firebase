@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Head, Main, NextScript } from "next/document";
 
-export default (): JSX.Element => (
+const layout: React.FC = () => (
   <html>
     <Head />
     <body>
@@ -10,3 +10,5 @@ export default (): JSX.Element => (
     </body>
   </html>
 );
+
+export default layout;
