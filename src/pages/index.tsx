@@ -14,6 +14,7 @@ const page: NextPage<Props> = props => {
         <title>{props.title}</title>
       </Head>
       <CountButton initial={0} />
+      <a href="/posts">POSTS</a>
     </>
   );
 };
