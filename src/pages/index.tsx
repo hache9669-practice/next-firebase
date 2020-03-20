@@ -18,7 +18,7 @@ const page: NextPage<Props> = props => {
   );
 };
 
-page.getInitialProps = async (): Promise<Props> => {
+page.getInitialProps = async ({ req }: NextPageContext): Promise<Props> => {
   return { title: "Hello World" };
 };
 
