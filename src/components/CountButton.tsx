@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 const { useState } = React;
 
 type Props = {
-    initial: number
-}
+  initial: number;
+};
 
-export const CountButton = (props: Props) => {
+export const CountButton = (props: Props): JSX.Element => {
   const [count, setCount] = useState(props.initial);
 
   return (
     <p>
-      <button onClick={() => setCount(count=>count-1)}>-</button>
+      <button onClick={(): void => setCount(count => count - 1)}>-</button>
       <b>{count}</b>
-      <button onClick={() => setCount(count => count+1)}>+</button>
+      <button onClick={(): void => setCount(count => count + 1)}>+</button>
     </p>
   );
 };
