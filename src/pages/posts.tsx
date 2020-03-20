@@ -1,50 +1,35 @@
 import React from "react";
+import { NextPage, NextPageContext } from "next";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../lib/db";
-import Post from "../components/Post";
+import { Post } from "../interface/models";
+import PostCard from "../components/PostCard";
 
 type Props = {
   posts: Post[];
 };
 
-export default class Posts extends React.Component<Props> {
-  static async getInitialProps() {
-    // db.jsのfirebaseのDB接続ファンクション
-    // DBのpostsコレクション内を全て取得した結果 = result
-    const result = await new Promise((resolve, reject) => {
-      db.collection("posts")
-        .get()
-        .then(snapshot => {
-          console.log(snapshot);
-          const data: Post[] = [];
-          snapshot.forEach(doc => {
-            const post: Post = doc.data() as Post;
-            data.push({
-              id: doc.id,
-              ...post
-            });
-          });
-          resolve(data);
-        })
-        .catch(error => {
-          reject([]);
-        });
-    });
-    return { posts: result };
+const page: NextPage<Props> = props => {
+  const [values, loading, error] = useCollectionData<Post>(
+    db.collection("posts"),
+    { idField: "id" }
+  );
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error || !values) {
+    return <div>{`Error: ${error?.message || "values does not exist"}`}</div>;
   }
 
-  handleDelete = (id: string) => {
-    console.log(id);
-  };
+  return (
+    <>
+      {values.map(post => (
+        <PostCard key={post.id} post={post} />
+      ))}
+      <a href="/index">INDEX</a>
+    </>
+  );
+};
 
-  render() {
-    const posts = this.props.posts;
-    return (
-      <>
-        {posts.map(post => (
-          <Post key={post.id} post={post}></Post>
-        ))}
-        <a href="/index">INDEX</a>
-      </>
-    );
-  }
-}
+export default page;

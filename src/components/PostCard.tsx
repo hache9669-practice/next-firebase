@@ -1,4 +1,5 @@
 import React from "react";
+import { Post } from "../interface/models";
 
 type Props = {
   post: Post;

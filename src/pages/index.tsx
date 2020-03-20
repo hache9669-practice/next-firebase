@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import { CountButton } from "../components/CountButton";
 import { NextPage, NextPageContext } from "next";
+import { CountButton } from "../components/CountButton";
 
 type Props = {
   title: string;
