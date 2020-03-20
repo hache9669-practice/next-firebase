@@ -1,5 +1,6 @@
 import React from "react";
 import { db } from "../lib/db";
+import Post from "../components/Post";
 
 type Props = {
   posts: Post[];
@@ -40,10 +41,7 @@ export default class Posts extends React.Component<Props> {
     return (
       <>
         {posts.map(post => (
-          <div className="post" key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-          </div>
+          <Post post={post}></Post>
         ))}
         <a href="/index">INDEX</a>
       </>
