@@ -1,6 +1,8 @@
 import React from "react";
 import { NextPage, NextPageContext } from "next";
+import Head from "next/head";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
 import { db } from "../lib/db";
 import { Post } from "../interface/models";
 import PostCard from "../components/PostCard";
@@ -24,6 +26,9 @@ const page: NextPage<Props> = props => {
 
   return (
     <>
+      <Head>
+        <title>Next.js + Firebase sample Posts</title>
+      </Head>
       {values.map(post => (
         <PostCard key={post.id} post={post} />
       ))}

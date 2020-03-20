@@ -3,7 +3,7 @@ import { Head, Main, NextScript } from "next/document";
 
 const layout: React.FC = () => (
   <html>
-    <Head />
+    <Head title="Next.js + Firebase sample" />
     <body>
       <Main />
       <NextScript />

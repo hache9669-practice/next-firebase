@@ -11,16 +11,12 @@ const page: NextPage<Props> = props => {
   return (
     <>
       <Head>
-        <title>{props.title}</title>
+        <title>Next.js + Firebase sample Index</title>
       </Head>
       <CountButton initial={0} />
       <a href="/posts">POSTS</a>
     </>
   );
-};
-
-page.getInitialProps = async ({ req }: NextPageContext): Promise<Props> => {
-  return { title: "Hello World" };
 };
 
 export default page;
