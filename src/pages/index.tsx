@@ -1,13 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import { NextPage, NextPageContext } from "next";
+import { NextPage } from "next";
 import { CountButton } from "../components/CountButton";
 
-type Props = {
-  title: string;
-};
-
-const page: NextPage<Props> = props => {
+const page: NextPage = () => {
   return (
     <>
       <Head>
