@@ -6,6 +6,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../lib/db";
 import { Post } from "../interface/models";
 import PostCard from "../components/PostCard";
+import { EditPost } from "../components/EditPost";
 
 type Props = {
   posts: Post[];
@@ -32,6 +33,7 @@ const page: NextPage<Props> = props => {
       {values.map(post => (
         <PostCard key={post.id} post={post} />
       ))}
+      <EditPost />
       <a href="/index">INDEX</a>
     </>
   );
